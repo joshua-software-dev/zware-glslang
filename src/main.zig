@@ -151,5 +151,5 @@ pub fn main() !void
 
     var in = [_]u64{};
     var out = [_]u64{};
-    try instance.invoke("_start", in[0..], out[0..], .{});
+    try instance.invoke("_start", in[0..], out[0..], .{ .operand_stack_size = 1024 * 4 });
 }
