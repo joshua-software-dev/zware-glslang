@@ -1,0 +1,11 @@
+.{
+    .name = "zware_glslang",
+    .version = "1.0.0",
+    .dependencies =
+    .{
+        .zware = .{
+            .url = "https://github.com/malcolmstill/zware/archive/2a0d082c2b611c67c74d57ec9c063aa46701a17f.tar.gz",
+            .hash = "12203e38cca1489a02cad1b40614461c6a9a48f6189e4a7a35cccd7ea6e0370e35ae",
+        },
+    },
+}
