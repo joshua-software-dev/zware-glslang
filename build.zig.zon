@@ -4,8 +4,8 @@
     .dependencies =
     .{
         .zware = .{
-            .url = "https://github.com/malcolmstill/zware/archive/2a0d082c2b611c67c74d57ec9c063aa46701a17f.tar.gz",
-            .hash = "12203e38cca1489a02cad1b40614461c6a9a48f6189e4a7a35cccd7ea6e0370e35ae",
+            .url = "https://github.com/joshua-software-dev/zware/archive/b7b55f9b38acbbb7c72dac6241e6de72ef9e22b1.tar.gz",
+            .hash = "1220cea5e5e433d05e7ca6a164cd596e1b0ab59b5102cd1fa1463e7466b5ebae7f1d",
         },
     },
 }
