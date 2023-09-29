@@ -1,5 +1,3 @@
-const std = @import("std");
-
 // Parts of the following are adapted from software with the following license
 
 // MIT License
@@ -24,6 +22,27 @@ const std = @import("std");
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+const builtin = @import("builtin");
+const std = @import("std");
+
+
+fn start_0110(req: *std.http.Client.Request, args: anytype) !void
+{
+    _ = args;
+    try req.start();
+}
+
+fn start_0120(req: *std.http.Client.Request, args: anytype) !void
+{
+    try req.start(args);
+}
+
+const start_func =
+    if (builtin.zig_version.order(std.SemanticVersion.parse("0.11.0") catch unreachable) == .gt)
+        start_0120
+    else
+        start_0110;
+
 fn downloadWithHttpClient(allocator: std.mem.Allocator, url: []const u8, writer: anytype) !void
 {
     const uri = try std.Uri.parse(url);
@@ -37,7 +56,7 @@ fn downloadWithHttpClient(allocator: std.mem.Allocator, url: []const u8, writer:
     var req = try client.request(.GET, uri, headers, .{});
     defer req.deinit();
 
-    try req.start();
+    try start_func(&req, .{});
     try req.wait();
 
     if (req.response.status != .ok) return error.ResponseNotOk;
